@@ -27,7 +27,7 @@ A static, multi-page website for Farmrite, an H-2A seasonal farm worker recruitm
 
 A few things are still placeholders and should be updated with Farmrite's real details before this goes live:
 
-- **Contact section** (`index.html`, inside `<section id="contact">`): email and phone numbers are filled in for both workers and employers. The employer "Office" address is still a placeholder — replace it with a real business address.
+- **Contact section** (`index.html`, inside `<section id="contact">`): email and phone numbers are filled in for both workers and employers. No business address is listed.
 - Double‑check the **Apply Now** Google Form link (`https://forms.gle/g9MasEvCfwyTXFxf9`) is still the correct, active form.
 - The **resources.html** links to South African/US government sites (Home Affairs, SAPS, U.S. Embassy South Africa) point at top-level official domains rather than deep-linked subpages, since those move around — confirm the specific passport/police-clearance/visa subpages before publishing and consider linking directly to them.
 - If the repo is renamed, or pushed under a different GitHub username than `burgergw`, update the base URL everywhere it's hardcoded: every page's `<link rel="canonical">` and `og:url`/`twitter` tags, every JSON-LD `@id`/`url`/`logo`/breadcrumb `item`, `robots.txt`'s `Sitemap:` line, and every `<loc>` in `sitemap.xml`.
