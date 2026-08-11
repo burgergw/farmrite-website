@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://farmrite.co.za/sitemap.xml
