@@ -449,15 +449,15 @@ button{ font-family: inherit; cursor:pointer; }
   font-family: var(--font-mono);
   letter-spacing: 0.18em;
   font-size: 0.8rem;
-  color: rgba(255,253,246,0.55);
+  color: rgba(255,253,246,0.85);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
-.about-split__logo{
-  position:relative;
-  display:block;
-  margin: 0 auto;
-  width: 58%;
-  max-width: 220px;
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));
+.about-split__photo{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 .about-split__body h2{
   font-size: clamp(1.7rem, 3vw, 2.3rem);
@@ -768,7 +768,10 @@ button{ font-family: inherit; cursor:pointer; }
   text-transform: uppercase;
   color: var(--color-soil);
 }
-.contact-detail__value{ font-size: 1.02rem; color: var(--color-green-deep); font-weight:600; }
+.contact-detail__value{ font-size: 1.02rem; color: var(--color-green-deep); font-weight:600; display:flex; flex-direction:column; gap:2px; }
+.contact-detail__value a{ color:inherit; }
+.contact-detail__value a:hover,
+.contact-detail__value a:focus-visible{ color: var(--color-accent); }
 .contact-note{
   color: var(--color-ink-soft);
   font-size: 0.92rem;
