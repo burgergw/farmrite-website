@@ -1,8 +1,8 @@
 {
   "name": "Farmrite — H-2A Seasonal Farm Jobs in the USA",
   "short_name": "Farmrite",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": ".",
+  "scope": ".",
   "display": "standalone",
   "background_color": "#F7EFD9",
   "theme_color": "#038112",

@@ -15,10 +15,9 @@ A static, multi-page website for Farmrite, an H-2A seasonal farm worker recruitm
 
 ## SEO features
 
-- Per-page `<title>`, meta description, canonical URL, Open Graph, and Twitter Card tags, all keyed to `https://farmrite.co.za`.
+- Per-page `<title>`, meta description, canonical URL, Open Graph, and Twitter Card tags, all keyed to `https://burgergw.github.io/farmrite-website/` (the default GitHub Pages project URL — no custom domain is configured right now; see "Switching to a custom domain later" if that changes).
 - JSON-LD structured data: `EmploymentAgency` (site-wide), `FAQPage` (faq.html, matches the visible Q&A exactly), `ItemList` (jobs.html), and `BreadcrumbList` on inner pages.
 - `robots.txt` and `sitemap.xml` at the site root.
-- `CNAME` file pre-set to `farmrite.co.za` for GitHub Pages custom-domain hosting — see "Before you publish" if this changes.
 - A CSS-only sticky "Apply Now" bar on mobile (`body.has-sticky-cta` + `.sticky-cta`) keeps the primary conversion action reachable at all times on small screens.
 - `site.webmanifest` + a real PNG icon set (`icons/favicon-48.png`, `icons/favicon-512.png`, `icons/apple-touch-icon.png`) derived from the Farmrite logo, for browser tabs and mobile "add to home screen."
 
@@ -31,7 +30,7 @@ A few things are still placeholders and should be updated with Farmrite's real d
 - **Contact section** (`index.html`, inside `<section id="contact">`): the email addresses use the `@farmrite.example` placeholder domain, and the phone/WhatsApp/address fields are unfilled. Replace these with real details.
 - Double‑check the **Apply Now** Google Form link (`https://forms.gle/g9MasEvCfwyTXFxf9`) is still the correct, active form.
 - The **resources.html** links to South African/US government sites (Home Affairs, SAPS, U.S. Embassy South Africa) point at top-level official domains rather than deep-linked subpages, since those move around — confirm the specific passport/police-clearance/visa subpages before publishing and consider linking directly to them.
-- If the final domain isn't `farmrite.co.za`, update it in: every page's `<link rel="canonical">` and `og:url`/`twitter` tags, the `CNAME` file, `robots.txt`'s `Sitemap:` line, and every `<loc>` in `sitemap.xml`.
+- If the repo is renamed, or pushed under a different GitHub username than `burgergw`, update the base URL everywhere it's hardcoded: every page's `<link rel="canonical">` and `og:url`/`twitter` tags, every JSON-LD `@id`/`url`/`logo`/breadcrumb `item`, `robots.txt`'s `Sitemap:` line, and every `<loc>` in `sitemap.xml`.
 - `sitemap.xml`'s `<lastmod>` dates should be bumped whenever a page's content changes meaningfully.
 - The hero background photo is still a generic stock image from Pexels — consider swapping in a real, licensed photo relevant to South African H-2A workers. (The Open Graph/Twitter share image now uses the Farmrite logo instead of the stock photo.)
 
@@ -43,14 +42,22 @@ A few things are still placeholders and should be updated with Farmrite's real d
 - `icons/favicon-48.png`, `icons/favicon-512.png` — transparent, used as the browser-tab favicon and in `site.webmanifest`.
 - `icons/apple-touch-icon.png` — 180×180, flattened onto the cream brand background (iOS doesn't support transparent home-screen icons).
 
-## Hosting on GitHub Pages (custom domain)
+## Hosting on GitHub Pages
 
-1. Create a new GitHub repository (or use an existing one) and push all of these files to it, keeping the folder structure as-is (`css/`, `js/`, `icons/`, and the `.html`/root files at the repository root).
+This site is currently set up for the default GitHub Pages project URL — no custom domain — at `https://burgergw.github.io/farmrite-website/`.
+
+1. Create a GitHub repository named `farmrite-website` under the `burgergw` account (or update the URLs per the note above if the name/owner differs) and push all of these files to it, keeping the folder structure as-is (`css/`, `js/`, `icons/`, `images/`, and the `.html`/root files at the repository root).
 2. In the repository, go to **Settings → Pages**.
 3. Under "Build and deployment," set **Source** to "Deploy from a branch."
 4. Choose the branch (usually `main`) and the `/ (root)` folder, then save.
-5. Under **Custom domain**, enter `farmrite.co.za` (this repo already includes a matching `CNAME` file) and follow GitHub's DNS instructions (an `ALIAS`/`ANAME`/`A` record at your DNS provider pointing at GitHub Pages, or a `CNAME` record if using a `www` subdomain instead).
-6. Enable "Enforce HTTPS" once the certificate has provisioned.
+5. GitHub will publish the site at `https://burgergw.github.io/farmrite-website/` within a minute or two. "Enforce HTTPS" is on by default for `github.io` URLs.
+
+### Switching to a custom domain later
+
+1. Add a file named `CNAME` at the repository root containing just the domain (e.g. `farmrite.co.za`).
+2. In **Settings → Pages**, enter the same domain under "Custom domain" and follow GitHub's DNS instructions (an `A`/`ALIAS`/`ANAME` record for the apex domain pointing at GitHub Pages, or a `CNAME` record at your DNS provider if using a `www` subdomain).
+3. Update the hardcoded base URL (see "Before you publish" above) from `https://burgergw.github.io/farmrite-website/` to `https://<yourdomain>/` across the canonical/OG/JSON-LD tags, `robots.txt`, and `sitemap.xml`, and set `start_url`/`scope` back to `/` in `site.webmanifest` if you want (`.` still works fine either way).
+4. Enable "Enforce HTTPS" once GitHub finishes issuing the certificate for the new domain.
 
 ## Structure
 
@@ -65,7 +72,6 @@ resources.html
 404.html
 robots.txt
 sitemap.xml
-CNAME
 site.webmanifest
 css/
   styles.css
